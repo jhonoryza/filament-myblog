@@ -18,13 +18,4 @@ class ListCategories extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
-
-    protected function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                TextColumn::make('name')->sortable(),
-            ])
-            ->defaultSort('name');
-    }
 }

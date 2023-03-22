@@ -18,12 +18,4 @@ class EditCategory extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
-
-    protected function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('name')->required(),
-            ]);
-    }    
 }

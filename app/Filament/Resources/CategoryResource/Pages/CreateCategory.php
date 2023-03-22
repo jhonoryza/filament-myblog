@@ -11,12 +11,4 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateCategory extends CreateRecord
 {
     protected static string $resource = CategoryResource::class;
-
-    protected function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('name')->required(),
-            ]);
-    }    
 }
