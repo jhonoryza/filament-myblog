@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PostResource extends Resource
 {
+    protected static ?string $navigationGroup = 'Blog';
+
     protected static ?string $model = Post::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
@@ -31,7 +33,8 @@ class PostResource extends Resource
             ->schema([
                 Select::make('category_id')
                     ->label('Category')
-                    ->options(Category::query()->pluck('name', 'id')),
+                    ->options(Category::query()->pluck('name', 'id'))
+                    ->searchable(),
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
