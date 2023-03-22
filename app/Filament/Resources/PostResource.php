@@ -39,7 +39,7 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('category_id'),
+                Tables\Columns\TextColumn::make('category.name'),
                 Tables\Columns\TextColumn::make('title'),
                 // Tables\Columns\TextColumn::make('desc'),
                 // Tables\Columns\TextColumn::make('body'),
