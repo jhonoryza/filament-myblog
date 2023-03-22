@@ -182,7 +182,7 @@ return [
     */
 
     'database_notifications' => [
-        'enabled' => false,
+        'enabled' => true,
         'polling_interval' => '30s',
     ],
 
@@ -232,12 +232,12 @@ return [
         'forms' => [
             'actions' => [
                 'alignment' => 'left',
-                'are_sticky' => false,
+                'are_sticky' => true,
             ],
-            'have_inline_labels' => false,
+            'have_inline_labels' => true,
         ],
         'footer' => [
-            'should_show_logo' => true,
+            'should_show_logo' => false,
         ],
         'max_content_width' => null,
         'notifications' => [
@@ -245,7 +245,7 @@ return [
             'alignment' => 'right',
         ],
         'sidebar' => [
-            'is_collapsible_on_desktop' => false,
+            'is_collapsible_on_desktop' => true,
             'groups' => [
                 'are_collapsible' => true,
             ],
