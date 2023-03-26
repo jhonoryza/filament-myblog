@@ -14,8 +14,11 @@ class CommentSeeder extends Seeder
      */
     public function run(): void
     {
-        Comment::factory(3)
-            ->recycle(Post::factory()->create())
-            ->create();
+        $posts = Post::get();
+        foreach ($posts as $post) {
+            Comment::factory(3)
+                ->recycle($post)
+                ->create();
+        }
     }
 }
