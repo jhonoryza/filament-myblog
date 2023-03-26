@@ -19,8 +19,8 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'post_id' => $this->factoryForModel(Post::class),
-            'user_id' => $this->factoryForModel(User::class),
+            'post_id' => Post::factory(),
+            'user_id' => User::factory(),
             'content' => $this->faker->text(),
             'is_approved' => true
         ];
