@@ -16,7 +16,7 @@ class CommentSeeder extends Seeder
     {
         $posts = Post::get();
         foreach ($posts as $post) {
-            Comment::factory(3)
+            Comment::factory(1)
                 ->recycle($post)
                 ->create();
         }
