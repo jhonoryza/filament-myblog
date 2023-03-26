@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\PostResource\RelationManagers;
 
+use App\Models\Tag;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -10,28 +11,22 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CommentsRelationManager extends RelationManager
+class TagsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'comments';
+    protected static string $relationship = 'tags';
 
-    protected static ?string $recordTitleAttribute = 'content';
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->searchable(),
-                Forms\Components\Select::make('post_id')
-                    ->relationship('post', 'title')
-                    ->required()
-                    ->searchable(),
-                Forms\Components\Textarea::make('content')
-                    ->required()
-                    ->maxLength(65535),
-                Forms\Components\Toggle::make('is_approved')
+                Forms\Components\TextInput::make('name')
                     ->required(),
+                Forms\Components\TextInput::make('slug')
+                    ->nullable(),
+                Forms\Components\TextInput::make('order')
+                    ->numeric()
             ]);
     }
 
@@ -39,9 +34,7 @@ class CommentsRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name'),
-                Tables\Columns\IconColumn::make('is_approved')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -64,5 +57,5 @@ class CommentsRelationManager extends RelationManager
                 Tables\Actions\DetachBulkAction::make(),
                 // Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }    
+    }
 }
